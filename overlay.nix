@@ -42,17 +42,13 @@ in {
       buildPhase = ''
         mkdir --parents rust rust-src esp/{\
         xtensa-esp32-elf-clang/esp-${llvm-version},\
-        xtensa-esp32s2-elf/esp-${esp-version},\
         xtensa-esp32-elf/esp-${esp-version},\
-        xtensa-esp32s3-elf/esp-${esp-version},\
         riscv32-esp-elf/esp-${esp-version}}
 
         tar --extract --file ${bins.rust} --directory rust
         tar --extract --file ${srcs.rust-src} --directory rust-src
         tar --extract --file ${bins.libs-clang-esp} --directory esp/xtensa-esp32-elf-clang/esp-${llvm-version}
         tar --extract --file ${bins.xtensa-esp-elf} --directory esp/xtensa-esp32-elf/esp-${esp-version}
-        tar --extract --file ${bins.xtensa-esp32s2-elf} --directory esp/xtensa-esp32s2-elf/esp-${esp-version}
-        tar --extract --file ${bins.xtensa-esp32s3-elf} --directory esp/xtensa-esp32s3-elf/esp-${esp-version}
         tar --extract --file ${bins.riscv32-esp-elf} --directory esp/riscv32-esp-elf/esp-${esp-version}
 
         ./rust/rust-nightly-aarch64-apple-darwin/install.sh --destdir=esp \
@@ -66,8 +62,6 @@ in {
 
         ln --symbolic $out/esp/{\
         xtensa-esp32-elf/esp-${esp-version}/xtensa-esp32-elf/bin/*,\
-        xtensa-esp32s2-elf/esp-${esp-version}/xtensa-esp32s2-elf/bin/*,\
-        xtensa-esp32s3-elf/esp-${esp-version}/xtensa-esp32s3-elf/bin/*,\
         riscv32-esp-elf/esp-${esp-version}/riscv32-esp-elf/bin/*} $out/bin
 
         # See: https://github.com/ivmarkov/rust-esp32-std-demo/issues/129
