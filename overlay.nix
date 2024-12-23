@@ -48,7 +48,7 @@ in {
         riscv32-esp-elf/esp-${esp-version}}
 
         tar --extract --file ${bins.rust} --directory rust
-        tar --extract --file ${bins.rust-src} --directory rust-src
+        tar --extract --file ${srcs.rust-src} --directory rust-src
         tar --extract --file ${bins.libs-clang-esp} --directory esp/xtensa-esp32-elf-clang/esp-${llvm-version}
         tar --extract --file ${bins.xtensa-esp32-elf} --directory esp/xtensa-esp32-elf/esp-${esp-version}
         tar --extract --file ${bins.xtensa-esp32s2-elf} --directory esp/xtensa-esp32s2-elf/esp-${esp-version}
