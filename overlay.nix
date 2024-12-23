@@ -39,7 +39,7 @@ in {
       version = esp-version;
       dontUnpack = true;
       buildInputs = with pkgs; [makeWrapper patchelf];
-      buildPhase = with srcs; ''
+      buildPhase = ''
         mkdir --parents rust rust-src esp/{\
         xtensa-esp32-elf-clang/esp-${llvm-version},\
         xtensa-esp32s2-elf/esp-${esp-version},\
@@ -47,9 +47,9 @@ in {
         xtensa-esp32s3-elf/esp-${esp-version},\
         riscv32-esp-elf/esp-${esp-version}}
 
-        tar --extract --file ${rust} --directory rust
-        tar --extract --file ${rust-src} --directory rust-src
-        tar --extract --file ${libs-clang-esp} --directory esp/xtensa-esp32-elf-clang/esp-${llvm-version}
+        tar --extract --file ${bins.rust} --directory rust
+        tar --extract --file ${bins.rust-src} --directory rust-src
+        tar --extract --file ${bins.libs-clang-esp} --directory esp/xtensa-esp32-elf-clang/esp-${llvm-version}
         tar --extract --file ${bins.xtensa-esp32-elf} --directory esp/xtensa-esp32-elf/esp-${esp-version}
         tar --extract --file ${bins.xtensa-esp32s2-elf} --directory esp/xtensa-esp32s2-elf/esp-${esp-version}
         tar --extract --file ${bins.xtensa-esp32s3-elf} --directory esp/xtensa-esp32s3-elf/esp-${esp-version}
