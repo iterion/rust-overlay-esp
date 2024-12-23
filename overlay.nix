@@ -51,7 +51,7 @@ in {
         tar --extract --file ${bins.xtensa-esp-elf} --directory esp/xtensa-esp32-elf/esp-${esp-version}
         tar --extract --file ${bins.riscv32-esp-elf} --directory esp/riscv32-esp-elf/esp-${esp-version}
 
-        ./rust/rust-nightly-aarch64-apple-darwin/install.sh --destdir=esp \
+        ./rust/rust-nightly-x86_64-unknown-linux-gnu/install.sh --destdir=esp \
           --prefix="" --without=rust-docs-json-preview,rust-docs --disable-ldconfig
         ./rust-src/rust-src-nightly/install.sh --destdir=esp --prefix="" --disable-ldconfig
       '';
